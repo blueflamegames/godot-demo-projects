@@ -49,7 +49,6 @@ __meta__ = {
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
-START_STATE = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
@@ -86,7 +85,6 @@ position = Vector2( 0, -58.8242 )
 texture = ExtResource( 10 )
 
 [node name="BulletSpawn" type="Node2D" parent="BodyPivot"]
-editor/display_folded = true
 position = Vector2( 1.17401, -61.266 )
 script = ExtResource( 11 )
 
@@ -107,7 +105,6 @@ position = Vector2( 110, 0 )
 polygon = PoolVector2Array( -20, 0, -20, -20, 20, -20, 20, 0 )
 
 [node name="StateNameDisplayer" type="Label" parent="."]
-editor/display_folded = true
 margin_left = -109.0
 margin_top = -172.0
 margin_right = 110.0
@@ -118,7 +115,6 @@ align = 1
 valign = 1
 uppercase = true
 script = ExtResource( 15 )
-
 [connection signal="state_changed" from="StateMachine" to="BodyPivot/WeaponPivot/Offset/Sword" method="_on_StateMachine_state_changed"]
 [connection signal="state_changed" from="StateMachine" to="StateNameDisplayer" method="_on_StateMachine_state_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_animation_finished"]

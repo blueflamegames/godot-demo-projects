@@ -6,11 +6,19 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
 
 [application]
 
 config/name="CirclePop"
+config/description="Demo of a simple game using visual script.
+You must click the circles to 'pop' them in
+order to stop their invasion of the screen."
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
@@ -20,5 +28,7 @@ singletons=[  ]
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.113725, 0.133333, 0.196078, 1 )
-environment/default_environment="res://default_env.tres"

@@ -6,14 +6,32 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
 
 [application]
 
-config/name="Navmesh Demo"
-run/main_scene="res://navmesh.scn"
+config/name="3D Navigation Mesh"
+config/description="Navigation mesh demo for 3D scenes, with a character
+able to pathfind around a complex 3D environment.
+The navigation path is drawn using a line.
+Code is provided for polyline following in 3D."
+run/main_scene="res://navmesh.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
 
 singletons=[  ]
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=3
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+quality/shadows/filter_mode=2
+quality/filters/msaa=2

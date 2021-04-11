@@ -1,13 +1,16 @@
-extends 'Pawn.gd'
+extends "Pawn.gd"
 
 onready var Grid = get_parent()
-export (PackedScene) var combat_actor
+#warning-ignore:unused_class_variable
+export(PackedScene) var combat_actor
+#warning-ignore:unused_class_variable
 var lost = false
 
 func _ready():
-	update_look_direction(Vector2(1, 0))
+	update_look_direction(Vector2.RIGHT)
 
-func _process(delta):
+
+func _process(_delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		return
@@ -20,14 +23,17 @@ func _process(delta):
 	else:
 		bump()
 
+
 func get_input_direction():
 	return Vector2(
-		int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")),
-		int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
+
 
 func update_look_direction(direction):
 	$Pivot/Sprite.rotation = direction.angle()
+
 
 func move_to(target_position):
 	set_process(false)
@@ -36,10 +42,11 @@ func move_to(target_position):
 	$Tween.interpolate_property($Pivot, "position", move_direction * 32, Vector2(), $AnimationPlayer.current_animation_length, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Pivot/Sprite.position = position - target_position
 	position = target_position
-	
+
 	yield($AnimationPlayer, "animation_finished")
-	
+
 	set_process(true)
+
 
 func bump():
 	$AnimationPlayer.play("bump")
