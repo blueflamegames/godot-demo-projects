@@ -140,9 +140,9 @@ tracks/3/keys = {
 radius = 5.0
 
 [node name="Coin" type="Area2D"]
+collision_layer = 0
 monitoring = false
 monitorable = false
-collision_layer = 0
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -160,4 +160,5 @@ shape = SubResource( 3 )
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

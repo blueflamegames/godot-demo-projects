@@ -13,6 +13,7 @@ onready var platform_detector = $PlatformDetector
 onready var animation_player = $AnimationPlayer
 onready var shoot_timer = $ShootAnimation
 onready var sprite = $Sprite
+onready var sound_jump = $Jump
 onready var gun = sprite.get_node(@"Gun")
 
 
@@ -21,10 +22,14 @@ func _ready():
 	var camera: Camera2D = $Camera
 	if action_suffix == "_p1":
 		camera.custom_viewport = $"../.."
+		yield(get_tree(), "idle_frame")
+		camera.make_current()
 	elif action_suffix == "_p2":
-		var viewport: Viewport = $"../../../../ViewportContainer2/Viewport"
+		var viewport: Viewport = $"../../../../ViewportContainer2/Viewport2"
 		viewport.world_2d = ($"../.." as Viewport).world_2d
 		camera.custom_viewport = viewport
+		yield(get_tree(), "idle_frame")
+		camera.make_current()
 
 
 # Physics process is a built-in loop in Godot.
@@ -46,6 +51,10 @@ func _ready():
 # - If you split the character into a state machine or more advanced pattern,
 #   you can easily move individual functions.
 func _physics_process(_delta):
+	# Play jump sound
+	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
+		sound_jump.play()
+
 	var direction = get_direction()
 
 	var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0

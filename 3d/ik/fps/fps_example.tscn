@@ -377,6 +377,7 @@ shape = SubResource( 6 )
 transform = Transform( 0.388878, -0.754027, 0.529355, 0, 0.574581, 0.818448, -0.921289, -0.318277, 0.223442, -9.77531, 11.5204, 11.766 )
 light_color = Color( 1, 0.925598, 0.820313, 1 )
 shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -529,6 +530,7 @@ __meta__ = {
 skeleton_path = NodePath("../../../../../../GodotBattleBot/Armature/Skeleton")
 bones_in_chain = PoolStringArray( "Right_UpperArm", "Right_LowerArm", "Right_Hand" )
 bones_in_chain_lengths = PoolRealArray( 1.97, 3, 0.1 )
+chain_iterations = 8
 limit_chain_iterations = false
 use_middle_joint_target = true
 
@@ -596,5 +598,4 @@ material/0 = ExtResource( 12 )
 material/1 = ExtResource( 13 )
 
 [editable path="KinematicBody/CameraHolder/Weapon/Pistol"]
-
 [editable path="KinematicBody/GodotBattleBot"]

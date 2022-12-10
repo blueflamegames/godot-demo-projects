@@ -93,7 +93,7 @@ namespace AndroidInAppPurchasesWithCSharp
             _payment.StartConnection();
         }
 
-        private void OnConnectError()
+        private void OnConnectError(int code, string message)
         {
             ShowAlert("PurchaseManager connect error");
         }
@@ -136,7 +136,7 @@ namespace AndroidInAppPurchasesWithCSharp
             }
         }
 
-        private void OnSkuDetailsQueryError(int code, string message)
+        private void OnSkuDetailsQueryError(int code, string message, string[] querySkuDetails)
         {
             ShowAlert($"SKU details query error {code}: {message}");
         }
@@ -156,7 +156,7 @@ namespace AndroidInAppPurchasesWithCSharp
             ShowAlert($"Purchase consumed successfully: {purchaseToken}");
         }
 
-        private void OnPurchaseConsumptionError(int code, string message)
+        private void OnPurchaseConsumptionError(int code, string message, string purchaseToken)
         {
             ShowAlert($"Purchase acknowledgement error {code}: {message}");
         }

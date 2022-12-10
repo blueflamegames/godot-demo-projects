@@ -8,6 +8,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
@@ -155,9 +158,6 @@ margin_bottom = 23.0
 text = "One-finger X/Y, two-finger Z + pinch"
 
 [editable path="HBoxContainer/ViewportContainer/Viewport/Spatial"]
-
 [editable path="HBoxContainer/ViewportContainer2/Viewport/Spatial"]
-
 [editable path="HBoxContainer2/ViewportContainer/Viewport/Spatial"]
-
 [editable path="HBoxContainer2/ViewportContainer2/Viewport/Spatial"]

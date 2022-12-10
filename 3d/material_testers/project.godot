@@ -8,11 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
-
 [application]
 
 config/name="Material Testers"
@@ -39,9 +34,14 @@ multithread/thread_rid_pool_prealloc=60
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
 quality/intended_usage/framebuffer_allocation=3
-quality/filters/anisotropic_filter_level=16
+vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/shadow_atlas/size=1024
+quality/shadow_atlas/size.mobile=512
+quality/shadows/filter_mode=2
+quality/filters/anisotropic_filter_level=16
 quality/filters/msaa=2
 quality/filters/msaa.mobile=0
 quality/filters/anisotropic_filter_level.mobile=4

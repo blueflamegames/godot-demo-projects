@@ -8,14 +8,10 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
-
 [application]
 
 config/name="WebRTC Minimal Connection"
+config/description="This is a minimal sample of using WebRTC connections to connect two peers to each other."
 run/main_scene="res://main.tscn"
 
 [autoload]

@@ -65,7 +65,6 @@ func _ready():
 	for i in OS.get_audio_driver_count():
 		audio_drivers.push_back(OS.get_audio_driver_name(i))
 	add_line("Available drivers", audio_drivers.join(", "))
-	add_line("MIDI inputs", scan_midi_devices())
 
 	add_header("Date")
 	add_line("Date and time (local)", datetime_to_string(OS.get_datetime()))
@@ -96,6 +95,7 @@ func _ready():
 	][OS.screen_orientation])
 
 	add_header("Engine")
+	add_line("Version", Engine.get_version_info()["string"])
 	add_line("Command-line arguments", str(OS.get_cmdline_args()))
 	add_line("Is debug build", OS.is_debug_build())
 	add_line("Executable path", OS.get_executable_path())

@@ -68,12 +68,10 @@ func clear_drawn_nodes():
 	_drawn_nodes.clear()
 
 
-func create_rigidbody_box(size, pickable = false, use_icon = false):
-	var shape = RectangleShape2D.new()
-	shape.extents = 0.5 * size
-
+func create_rigidbody(shape, pickable = false, transform = Transform.IDENTITY):
 	var collision = CollisionShape2D.new()
 	collision.shape = shape
+	collision.transform = transform
 
 	var body = RigidBody2D.new()
 	body.add_child(collision)
@@ -81,6 +79,15 @@ func create_rigidbody_box(size, pickable = false, use_icon = false):
 	if pickable:
 		var script = load("res://utils/rigidbody_pick.gd")
 		body.set_script(script)
+
+	return body
+
+
+func create_rigidbody_box(size, pickable = false, use_icon = false, transform = Transform.IDENTITY):
+	var shape = RectangleShape2D.new()
+	shape.extents = 0.5 * size
+
+	var body = create_rigidbody(shape, pickable, transform)
 
 	if use_icon:
 		var texture = load("res://icon.png")

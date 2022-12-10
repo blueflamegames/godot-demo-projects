@@ -95,7 +95,7 @@ func _initialize_collision_shapes():
 	for node in $Shapes.get_children():
 		var body = node as PhysicsBody
 		var shape = body.shape_owner_get_shape(0, 0)
-		shape.resource_name = node.name.substr("RigidBody".length())
+		shape.resource_name = String(node.name).substr("RigidBody".length())
 
 		_collision_shapes.push_back(shape)
 
@@ -170,7 +170,7 @@ func _on_option_selected(option):
 
 
 func _find_type_index(type_name):
-	for type_index in _collision_shapes.size():
+	for type_index in range(_collision_shapes.size()):
 		var type_shape = _collision_shapes[type_index]
 		if type_shape.resource_name.find(type_name) > -1:
 			return type_index

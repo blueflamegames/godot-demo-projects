@@ -3,15 +3,16 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/texture_wood.png-e3109b4e15fb09c6edce5029c4f30771.s3tc.stex"
+path.etc="res://.import/texture_wood.png-e3109b4e15fb09c6edce5029c4f30771.etc.stex"
 metadata={
-"imported_formats": [ "s3tc" ],
+"imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://test_materials/texture_wood.png"
-dest_files=[ "res://.import/texture_wood.png-e3109b4e15fb09c6edce5029c4f30771.s3tc.stex" ]
+dest_files=[ "res://.import/texture_wood.png-e3109b4e15fb09c6edce5029c4f30771.s3tc.stex", "res://.import/texture_wood.png-e3109b4e15fb09c6edce5029c4f30771.etc.stex" ]
 
 [params]
 
@@ -29,6 +30,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

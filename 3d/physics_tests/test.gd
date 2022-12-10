@@ -46,33 +46,32 @@ func add_sphere(pos, radius, color):
 
 
 func add_shape(shape, transform, color):
-	var collision = CollisionShape.new()
-	collision.shape = shape
+	var debug_mesh = shape.get_debug_mesh()
 
-	_drawn_nodes.push_back(collision)
-	add_child(collision)
+	var mesh_instance = MeshInstance.new()
+	mesh_instance.transform = transform
+	mesh_instance.mesh = debug_mesh
 
-	var mesh_instance = collision.get_child(0)
 	var material = SpatialMaterial.new()
 	material.flags_unshaded = true
 	material.albedo_color = color
 	mesh_instance.material_override = material
 
-	collision.global_transform = transform
+	add_child(mesh_instance)
+	_drawn_nodes.push_back(mesh_instance)
 
 
 func clear_drawn_nodes():
 	for node in _drawn_nodes:
+		remove_child(node)
 		node.queue_free()
 	_drawn_nodes.clear()
 
 
-func create_rigidbody_box(size, pickable = false):
-	var shape = BoxShape.new()
-	shape.extents = 0.5 * size
-
+func create_rigidbody(shape, pickable = false, transform = Transform.IDENTITY):
 	var collision = CollisionShape.new()
 	collision.shape = shape
+	collision.transform = transform
 
 	var body = RigidBody.new()
 	body.add_child(collision)
@@ -82,6 +81,13 @@ func create_rigidbody_box(size, pickable = false):
 		body.set_script(script)
 
 	return body
+
+
+func create_rigidbody_box(size, pickable = false, transform = Transform.IDENTITY):
+	var shape = BoxShape.new()
+	shape.extents = 0.5 * size
+
+	return create_rigidbody(shape, pickable, transform)
 
 
 func start_timer(timeout):

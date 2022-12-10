@@ -71,18 +71,19 @@ func set_view_mode(view_mode_index):
 
 # Change the 2D basis of the sprite to try and make it "fit" multiple view modes.
 func _sprite_basis():
-	if Input.is_action_pressed("forty_five_mode"):
-		set_view_mode(0)
-	elif Input.is_action_pressed("isometric_mode"):
-		set_view_mode(1)
-	elif Input.is_action_pressed("top_down_mode"):
-		set_view_mode(2)
-	elif Input.is_action_pressed("front_side_mode"):
-		set_view_mode(3)
-	elif Input.is_action_pressed("oblique_y_mode"):
-		set_view_mode(4)
-	elif Input.is_action_pressed("oblique_z_mode"):
-		set_view_mode(5)
+	if not Engine.editor_hint:
+		if Input.is_action_pressed("forty_five_mode"):
+			set_view_mode(0)
+		elif Input.is_action_pressed("isometric_mode"):
+			set_view_mode(1)
+		elif Input.is_action_pressed("top_down_mode"):
+			set_view_mode(2)
+		elif Input.is_action_pressed("front_side_mode"):
+			set_view_mode(3)
+		elif Input.is_action_pressed("oblique_y_mode"):
+			set_view_mode(4)
+		elif Input.is_action_pressed("oblique_z_mode"):
+			set_view_mode(5)
 
 
 # This method returns a bool but if true it also outputs to the direction variable.
@@ -102,7 +103,7 @@ func _check_movement() -> bool:
 
 	# Check for isometric controls and add more to movement accordingly.
 	# For efficiency, only check the X axis since this X axis value isn't used anywhere else.
-	if !_parent_math.isometric_controls and is_equal_approx(Node25D.SCALE * 0.86602540378, _parent_node25d.get_basis()[0].x):
+	if not _parent_math.isometric_controls and is_equal_approx(Node25D.SCALE * 0.86602540378, _parent_node25d.get_basis()[0].x):
 		if Input.is_action_pressed("move_right"):
 			z += 1
 		if Input.is_action_pressed("move_left"):

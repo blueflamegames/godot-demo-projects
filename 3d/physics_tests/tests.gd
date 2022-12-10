@@ -35,6 +35,18 @@ var _tests = [
 		"path": "res://tests/functional/test_raycasting.tscn",
 	},
 	{
+		"id": "Functional Tests/RigidBody Impact",
+		"path": "res://tests/functional/test_rigidbody_impact.tscn",
+	},
+	{
+		"id": "Functional Tests/RigidBody Ground Check",
+		"path": "res://tests/functional/test_rigidbody_ground_check.tscn",
+	},
+	{
+		"id": "Functional Tests/Moving Platform",
+		"path": "res://tests/functional/test_moving_platform.tscn",
+	},
+	{
 		"id": "Performance Tests/Broadphase",
 		"path": "res://tests/performance/test_perf_broadphase.tscn",
 	},
@@ -43,8 +55,8 @@ var _tests = [
 		"path": "res://tests/performance/test_perf_contacts.tscn",
 	},
 	{
-		"id" : "Performance Tests/Contacts Extended",
-		"path" : "res://tests/performance/test_perf_contacts_extended.tscn",
+		"id" : "Performance Tests/Contact Islands",
+		"path" : "res://tests/performance/test_perf_contact_islands.tscn",
 	},
 ]
 

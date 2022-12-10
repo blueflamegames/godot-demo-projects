@@ -8,7 +8,7 @@ puppet var puppet_motion = Vector2()
 export var stunned = false
 
 # Use sync because it will be called everywhere
-sync func setup_bomb(bomb_name, pos, by_who):
+remotesync func setup_bomb(bomb_name, pos, by_who):
 	var bomb = preload("res://bomb.tscn").instance()
 	bomb.set_name(bomb_name) # Ensure unique name for the bomb
 	bomb.position = pos
@@ -41,7 +41,7 @@ func _physics_process(_delta):
 			motion = Vector2()
 
 		if bombing and not prev_bombing:
-			var bomb_name = get_name() + str(bomb_index)
+			var bomb_name = String(get_name()) + str(bomb_index)
 			var bomb_pos = position
 			rpc("setup_bomb", bomb_name, bomb_pos, get_tree().get_network_unique_id())
 

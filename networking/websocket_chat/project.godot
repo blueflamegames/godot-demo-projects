@@ -8,14 +8,10 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
-
 [application]
 
 config/name="WebSocket Chat Demo"
+config/description="This is a demo of a simple chat implemented using WebSockets, showing both how to host a websocket server from Godot and how to connect to it."
 run/main_scene="res://combo/combo.tscn"
 config/icon="res://icon.png"
 
